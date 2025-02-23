@@ -15,40 +15,38 @@ namespace CalculatorApp
         private string _input = "";  // Для хранения вводимой строки
         private double _firstNumber = 0;  // Первое число
         private double _secondNumber = 0;  // Второе число
-        private string _operation = "";  // Операция (+, -, *, /)
+        private string _operation = "";
 
         public Form1()
         {
             InitializeComponent();
         }
-        // Обработчик нажатия на кнопки с цифрами
+        
         private void button_Click(object sender, EventArgs e)
         {
             Button button = (Button)sender;
-            _input += button.Text;  // Добавляем текст кнопки в строку ввода
-            textBoxDisplay.Text = _input;  // Отображаем в TextBox
+            _input += button.Text;
+            textBoxDisplay.Text = _input;
         }
-        // Обработчик нажатия на операторы
         private void operator_Click(object sender, EventArgs e)
         {
             Button button = (Button)sender;
 
-            if (_input != "")  // Если есть введенное число
+            if (_input != "")
             {
-                _firstNumber = double.Parse(_input);  // Преобразуем строку в число
-                _operation = button.Text;  // Запоминаем операцию
-                _input = "";  // Очищаем строку ввода для второго числа
+                _firstNumber = double.Parse(_input);
+                _operation = button.Text;
+                _input = "";
             }
         }
 
         private void equal_Click(object sender, EventArgs e)
         {
-            if (_input != "" && _operation != "")  // Проверяем, что есть второе число и операция
+           if (_input != "" && _operation != "")
             {
-                _secondNumber = double.Parse(_input);  // Преобразуем строку во второе число
+                _secondNumber = double.Parse(_input);
                 double result = 0;
 
-                // Выполняем операцию в зависимости от выбранного оператора
                 switch (_operation)
                 {
                     case "+":
@@ -66,12 +64,14 @@ namespace CalculatorApp
                         else
                             MessageBox.Show("Ошибка: Деление на 0!");
                         break;
+                    case "^":
+                        result = Math.Pow(_firstNumber, _secondNumber);
+                        break;
                 }
 
-                // Отображаем результат в TextBox
                 textBoxDisplay.Text = result.ToString();
-                _input = result.ToString();  // Запоминаем результат для дальнейших операций
-                _operation = "";  // Очищаем операцию
+                _input = result.ToString();
+                _operation = "";
             }
         }
 
@@ -152,6 +152,32 @@ namespace CalculatorApp
         private void buttonDivide_Click(object sender, EventArgs e)
         {
             operator_Click(sender, e);
+        }
+
+        private void power_Click(object sender, EventArgs e)
+        {
+            operator_Click(sender, e);
+        }
+        private void sqrt_Click(object sender, EventArgs e)
+        {
+            if (_input != "")
+            {
+                double number = double.Parse(_input);
+                if (number >= 0)
+                {
+                    double result = Math.Sqrt(number);
+                    textBoxDisplay.Text = result.ToString();
+                    _input = result.ToString();
+                }
+                else
+                {
+                    MessageBox.Show("Ошибка: Квадратный корень из отрицательного числа!");
+                }
+            }
+        }
+        private void squareRoot_Click(object sender, EventArgs e)
+        {
+            sqrt_Click(sender, e);
         }
     }
 }

@@ -47,6 +47,8 @@
             this.clear = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.power = new System.Windows.Forms.Button();
+            this.squareRoot = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -208,7 +210,7 @@
             // 
             // clear
             // 
-            this.clear.Location = new System.Drawing.Point(6, 310);
+            this.clear.Location = new System.Drawing.Point(6, 360);
             this.clear.Name = "clear";
             this.clear.Size = new System.Drawing.Size(183, 44);
             this.clear.TabIndex = 17;
@@ -228,9 +230,11 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.squareRoot);
             this.groupBox1.Controls.Add(this.textBoxDisplay);
             this.groupBox1.Controls.Add(this.clear);
             this.groupBox1.Controls.Add(this.button9);
+            this.groupBox1.Controls.Add(this.power);
             this.groupBox1.Controls.Add(this.equal);
             this.groupBox1.Controls.Add(this.buttonSubtract);
             this.groupBox1.Controls.Add(this.buttonAdd);
@@ -245,18 +249,38 @@
             this.groupBox1.Controls.Add(this.button7);
             this.groupBox1.Controls.Add(this.button4);
             this.groupBox1.Controls.Add(this.button8);
-            this.groupBox1.Location = new System.Drawing.Point(12, 43);
+            this.groupBox1.Location = new System.Drawing.Point(78, 39);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(196, 365);
+            this.groupBox1.Size = new System.Drawing.Size(198, 414);
             this.groupBox1.TabIndex = 19;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "...";
+            // 
+            // power
+            // 
+            this.power.Location = new System.Drawing.Point(6, 310);
+            this.power.Name = "power";
+            this.power.Size = new System.Drawing.Size(87, 44);
+            this.power.TabIndex = 20;
+            this.power.Text = "^";
+            this.power.UseVisualStyleBackColor = true;
+            this.power.Click += new System.EventHandler(this.power_Click);
+            // 
+            // squareRoot
+            // 
+            this.squareRoot.Location = new System.Drawing.Point(99, 310);
+            this.squareRoot.Name = "squareRoot";
+            this.squareRoot.Size = new System.Drawing.Size(90, 44);
+            this.squareRoot.TabIndex = 21;
+            this.squareRoot.Text = "кв корень";
+            this.squareRoot.UseVisualStyleBackColor = true;
+            this.squareRoot.Click += new System.EventHandler(this.squareRoot_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(431, 423);
+            this.ClientSize = new System.Drawing.Size(350, 465);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
             this.Name = "Form1";
@@ -289,6 +313,8 @@
         private System.Windows.Forms.Button clear;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button power;
+        private System.Windows.Forms.Button squareRoot;
     }
 }
 
